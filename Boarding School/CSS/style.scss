@@ -1,0 +1,395 @@
+//Imports
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+//Reset
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+//MAPS
+$font-weights: (
+	"regluar": 400,
+	"bold": 700,
+);
+
+$colors: (
+	"text": #000000,
+	"background1": #e75a7c,
+	"background2": #eee5e9,
+	"fun1": #e8ec67,
+	"fun2": #00ffc5,
+);
+//GLOBALS
+a {
+	text-decoration: none;
+	color: black;
+}
+
+h1,
+h2 {
+	font-family: "Oswald";
+}
+
+p {
+	font-family: "Quattrocento Sans";
+}
+
+ul {
+	list-style: none;
+}
+//SPECIFICS
+header {
+	position: fixed;
+	width: 100vw;
+	z-index: 2;
+	background: map-get($colors, "background1");
+}
+
+.top-nav {
+	position: relative;
+	display: flex;
+	align-items: center;
+	font-family: "Oswald";
+	height: 10vh;
+	width: 95%;
+	margin: auto;
+	font-size: 2em;
+	background: map-get($colors, "background1");
+
+	h1 {
+		flex: 3;
+	}
+
+	ul {
+		flex: 3;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	a:hover {
+		color: map-get($colors, "background2");
+	}
+
+	.dropdown-button {
+		padding: 0.5em;
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: none;
+	}
+
+	.dropdown-button:hover {
+		color: map-get($colors, "background2");
+	}
+}
+
+.dropdown-container {
+	position: absolute;
+	top: 10vh;
+	width: 100vw;
+}
+
+.dropdown-content {
+	max-height: 0px;
+	width: 100%;
+	overflow-y: hidden;
+	transition: max-height 0.7s ease-in-out;
+	z-index: 2;
+	background: map-get($colors, "background1");
+
+	ul {
+		font-family: "Oswald";
+		font-size: 2em;
+		flex: 3;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	a:hover {
+		color: map-get($colors, "background2");
+	}
+}
+
+.dropdown-content-open {
+	max-height: 500px;
+}
+
+.main {
+	max-height: auto;
+}
+
+#story {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	height: auto;
+	width: 100vw;
+	background: map-get($colors, "background2");
+
+	* {
+		margin-top: 1.5em;
+	}
+
+	.story-image {
+		height: 100%;
+		width: 50%;
+	}
+
+	.story-image img {
+		height: 100%;
+		width: 100%;
+	}
+
+	.story-text {
+		height: 100%;
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 3em;
+	}
+
+	.story-text h1 {
+		letter-spacing: 0.5em;
+		margin-bottom: 1em;
+	}
+
+	.story-text p {
+		line-height: 1.5;
+	}
+
+	.story-text button {
+		outline: none;
+		border: none;
+		padding: 1em 1.5em;
+		background: map-get($colors, "background1");
+		font-size: 2rem;
+		color: map-get($colors, "text");
+	}
+
+	.story-text button:hover {
+		color: map-get($colors, "background2");
+		cursor: pointer;
+	}
+}
+
+#pricing {
+	background: map-get($colors, "fun1");
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	height: auto;
+	width: 100vw;
+
+	.pricing-header h1 {
+		font-size: 5em;
+		letter-spacing: 0.5em;
+	}
+
+	.pricing-grid {
+		height: auto;
+		width: 90%;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		grid-gap: 1em;
+		margin-bottom: 2em;
+	}
+
+	.price-card {
+		height: 20rem;
+		width: 100%;
+		background: map-get($colors, "fun2");
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.25em;
+		line-height: 1.25;
+	}
+}
+
+#locations {
+	min-height: 100vh;
+	height: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: map-get($colors, "background2");
+
+	.locations-text {
+		width: 50%;
+		text-align: center;
+	}
+
+	.locations-text h1 {
+		font-size: 2.5em;
+		letter-spacing: 0.5em;
+	}
+
+	.locations-text ul li {
+		font-family: "Oswald";
+		font-size: 3em;
+	}
+
+	.locations-text ul li:hover {
+		cursor: pointer;
+		color: map-get($colors, "background1");
+	}
+
+	.locations-image {
+		height: 100vh;
+		width: 50%;
+	}
+
+	.locations-image img {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+//Media Queries
+@media (max-width: 575.98px) {
+	.top-nav ul {
+		display: none;
+	}
+
+	.top-nav .dropdown-button {
+		display: block;
+	}
+
+	#story {
+		flex-direction: column;
+
+		.story-image {
+			width: 100%;
+			height: 50%;
+		}
+
+		.story-text {
+			width: 100%;
+			height: 50%;
+		}
+	}
+
+	#pricing {
+		.pricing-header h1 {
+			font-size: 2rem;
+		}
+	}
+
+	#locations {
+		flex-direction: column;
+
+		.locations-text {
+			width: 100%;
+		}
+
+		.locations-image {
+			display: none;
+		}
+	}
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+	.top-nav ul {
+		display: none;
+	}
+
+	.top-nav .dropdown-button {
+		display: block;
+	}
+
+	#story {
+		flex-direction: column;
+
+		.story-image {
+			width: 100%;
+		}
+
+		.story-text {
+			width: 100%;
+		}
+	}
+
+	#pricing {
+		.pricing-header h1 {
+			font-size: 2rem;
+		}
+	}
+
+	#locations {
+		flex-direction: column;
+		font-size: 1.5em;
+
+		.locations-text {
+			width: 100%;
+		}
+
+		.locations-image {
+			display: none;
+		}
+	}
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+	.top-nav ul {
+		display: none;
+	}
+
+	.top-nav .dropdown-button {
+		display: block;
+	}
+
+	#story {
+		flex-direction: column;
+
+		.story-image {
+			width: 100%;
+			height: 50%;
+		}
+
+		.story-text {
+			width: 100%;
+			height: 50%;
+		}
+	}
+
+	#pricing {
+		.pricing-header h1 {
+			font-size: 2rem;
+		}
+	}
+
+	#locations {
+		flex-direction: column;
+
+		.locations-text {
+			width: 100%;
+		}
+
+		.locations-text ul li,
+		.locations-text h1 {
+			font-size: 2em;
+		}
+
+		.locations-image {
+			display: none;
+		}
+	}
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+}
